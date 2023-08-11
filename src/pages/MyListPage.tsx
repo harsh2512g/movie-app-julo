@@ -74,21 +74,6 @@ const StyledHeading = styled.h1`
 const MyListPage: React.FC = () => {
   const { myList, setMyList } = useMovieContext();
 
-//   useEffect(() => {
-//     // Load data from local storage on page load
-//     const storedList = localStorage.getItem('myList');
-//     if (storedList) {
-//       setMyList(JSON.parse(storedList));
-//     }
-//   }, [setMyList]);
-
-//   useEffect(() => {
-//     // Store data in local storage whenever myList changes
-//     if(myList.length>0){
-//     localStorage.setItem('myList', JSON.stringify(myList));
-//     }
-//   }, [myList]);
-
   const removeFromMyList = (id: string) => {
     const updatedList = myList.filter(movie => movie.imdbID !== id);
     setMyList(updatedList);

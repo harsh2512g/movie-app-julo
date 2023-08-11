@@ -1,4 +1,4 @@
-// MovieDetail.tsx
+
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMovieContext } from '../context/MovieContext';

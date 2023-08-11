@@ -1,6 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/react'; // Import the css function
-import styled from '@emotion/styled'; // Import the styled function
+import { css } from '@emotion/react'; 
+import styled from '@emotion/styled'; 
 
 const SkeletonContainer = styled.div` // Wrap the div with the styled function
   background-color: #ddd;

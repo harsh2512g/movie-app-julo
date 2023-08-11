@@ -21,6 +21,7 @@ const StyledMovieListContainer = styled.div`
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  
 `;
 
 const StyledMovieCard = styled.div`
@@ -51,7 +52,7 @@ const StyledMyListLink = styled(Link)`
   text-decoration: none;
   font-weight: bold;
   transition: background-color 0.3s ease-in-out;
-
+  text-align:right;
   &:hover {
     background-color: #b50710;
   }
@@ -83,11 +84,8 @@ const MovieListPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [totalPages,setTotalPages]=useState(1);
-  const moviesPerPage = 10; // Adjust this value as needed
   
- 
-//   const totalPages = Math.ceil(movies.length / moviesPerPage);
-console.log({totalPages,isLoading})
+console.log({totalPages,isLoading,currentPage})
   console.log(window.innerHeight,window.scrollY,document.body.offsetHeight)
   const handleScroll = () => {
    console.log('harsh')
@@ -95,7 +93,6 @@ console.log({totalPages,isLoading})
       window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !isLoading &&
       currentPage < totalPages
     ) {
-      // Load more data
       
       setCurrentPage(prevPage => prevPage + 1);
       setIsLoading(true);
@@ -140,36 +137,22 @@ console.log({apiPageCalled,page})
   };
 
   useEffect(() => {
-    fetchData(currentPage); // Fetch the first page of data when component mounts
+    fetchData(currentPage); 
   }, [currentPage]);
 
 
-//   useEffect(() => {
-//     if (isLoading) {
-//         fetchData();
-//       }
-//   }, [currentPage,isLoading]);
-
-//   useEffect(() => {
-//     fetchData(); 
-//   }, []);
-//   const loadMore = () => {
-//     setCurrentPage(prevPage => prevPage + 1);
-//   };
-
 const renderMovieCards = () => {
     if (isLoading) {
-      // Show skeleton loaders while data is loading
 
       return Array.from({ length: 10 }).map((_, index) => (
-        <div style={{width:262,height:492}} key={index}>
+        <div className={css`width:262px;height:494px`} key={index}>
           <Skeleton />
         </div>
       ));
     }
 
     return movies.map((movie) => (
-      // Your regular movie card code
+  
       
         <StyledMovieLink to={`/movie/${movie.imdbID}`} key={movie.imdbID}>
           <StyledMovieCard>
@@ -188,15 +171,13 @@ const renderMovieCards = () => {
     <StyledMovieApp>
           <StyledHeading>Movie App</StyledHeading>
       <StyledSubtitle>Discover and Enjoy Movies</StyledSubtitle>
+      <div className={css`text-align:right; margin-right:20px`}>
     <StyledMyListLink to={`/my-list`}>My List</StyledMyListLink>
-    
+    </div>
     <StyledMovieListContainer>
       
     {renderMovieCards()}
       
-      {/* <button onClick={loadMore} disabled={currentPage >= totalPages}>
-        Load More
-      </button> */}
     </StyledMovieListContainer>
     
     </StyledMovieApp>

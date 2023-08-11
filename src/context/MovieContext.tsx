@@ -1,4 +1,4 @@
-// MovieContext.tsx
+
 import React, { useEffect,createContext, useState, useContext, ReactNode } from 'react';
 
 interface Movie {
@@ -22,14 +22,14 @@ export const MovieProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [movies, setMovies] = useState<Movie[]>([]);
   const [myList, setMyList] = useState<Movie[]>([]);
   useEffect(() => {
-    // Load data from local storage on context initialization
+ 
     const storedList = localStorage.getItem('myList');
     if (storedList) {
       setMyList(JSON.parse(storedList));
     }
   }, []);
   useEffect(() => {
-    // Store data in local storage whenever myList changes
+    
     if(myList.length>0){
     localStorage.setItem('myList', JSON.stringify(myList));
     }
