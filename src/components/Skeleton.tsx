@@ -22,7 +22,7 @@ const SkeletonContainer = styled.div` // Wrap the div with the styled function
 `;
 
 const Skeleton: React.FC = () => {
-  return <SkeletonContainer />; // Use the styled component here
+  return <SkeletonContainer />; 
 };
 
 export default Skeleton;

@@ -15,7 +15,7 @@ interface MovieDetailProps {
   movie: Movie;
 }
 
-const MovieDetail: React.FC<MovieDetailProps> = ({ movie }) => {
+const MovieDetail: React.FC<MovieDetailProps> = React.memo(({ movie }) => {
   const { myList, setMyList } = useMovieContext();
   const [isInMyList, setIsInMyList] = useState(myList.some(item => item.imdbID === movie.imdbID));
 
@@ -46,6 +46,6 @@ const MovieDetail: React.FC<MovieDetailProps> = ({ movie }) => {
       <Link to="/">Back to Movie List</Link>
     </div>
   );
-};
+});
 
 export default MovieDetail;

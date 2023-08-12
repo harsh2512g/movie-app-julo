@@ -88,7 +88,6 @@ const MovieListPage: React.FC = () => {
 console.log({totalPages,isLoading,currentPage})
   console.log(window.innerHeight,window.scrollY,document.body.offsetHeight)
   const handleScroll = () => {
-   console.log('harsh')
     if (
       window.innerHeight + window.scrollY >= document.body.offsetHeight - 200 && !isLoading &&
       currentPage < totalPages
@@ -109,17 +108,10 @@ useEffect(() => {
   };
 }, [isLoading, currentPage, totalPages]);
 
-  useEffect(() => {
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isLoading]);
 
   const apiPageCalled:any =[];
   const fetchData = async (page:number) => {
-console.log({apiPageCalled,page})
+
     setIsLoading(true);
     if(!apiPageCalled.includes(page)){
         apiPageCalled.push(page);
