@@ -77,8 +77,11 @@ const MyListPage: React.FC = () => {
   const removeFromMyList = (id: string) => {
     const updatedList = myList.filter(movie => movie.imdbID !== id);
     setMyList(updatedList);
+    if(updatedList.length==0){
+      localStorage.setItem('myList', JSON.stringify(updatedList));
+      }
   };
-
+ 
   return (
     <StyledMyList>
       {myList.length === 0 ? (
